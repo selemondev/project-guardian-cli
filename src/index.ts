@@ -4,7 +4,8 @@ import { renderLicense } from "./utils/renderLicense";
 import { renderCodeOfConduct } from "./utils/renderCodeOfConduct";
 import { renderContribution } from "./utils/renderContribution";
 import { renderGitIgnore } from "./utils/renderGitignore";
-import { codeOfConductMarkdownPath, contributionMarkdownPath, gitIgnorePath, licensePath } from "./utils/constant"
+import { renderReadme } from "./utils/renderReadme"
+import { codeOfConductMarkdownPath, contributionMarkdownPath, gitIgnorePath, licensePath, readmePath } from "./utils/constant"
 import fs from 'fs-extra'
 import { logger } from "./utils/logger";
 
@@ -14,6 +15,7 @@ async function main() {
     const filesExist = [
         fs.existsSync(contributionMarkdownPath),
         fs.existsSync(codeOfConductMarkdownPath),
+        fs.existsSync(readmePath),
         fs.existsSync(licensePath),
         fs.existsSync(gitIgnorePath)
     ];
@@ -28,6 +30,8 @@ async function main() {
             await renderContribution();
 
             await renderCodeOfConduct();
+
+            await renderReadme()
 
             await renderLicense();
 
