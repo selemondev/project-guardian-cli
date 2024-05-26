@@ -2,6 +2,7 @@
   "name": "guardian-cli",
   "type": "module",
   "version": "0.0.0",
+  "packageManager": "pnpm@9.1.1",
   "description": "Generate neccessary markdown files for your open source project",
   "author": "Selemondev",
   "license": "MIT",
