@@ -19,7 +19,7 @@ Project Guardian CLI
 
 I have been building open source projects for quiet sometime now and the one thing that is annoying most of the time is to have to setup the `README.md`, `CONTRIBUTING.md`, `CODE_OF_CONDUCT.md`, `LICENSE` and `github workflows` manually.
 
-Why not create a template and clone it when starting a new project? By using a template one might be limited to the projects one can build. For example, the setup for building a CLI is different than the setup for building a Vue package or React package. The CLI is agnostic in the sense that the most common files found in most open source projects will be added to your project with your name, repository URL etc depending on how well you have configured your `package.json` file.
+Why not create a template and clone it when starting a new project? By using a template one might be limited to the projects one can build. For example, the setup for building a CLI is different from the setup for building a Vue package or React package. The CLI is agnostic in the sense that it adds the most common files found in most open source projects to your project including your name, repository URL etc depending on how well you have configured your `package.json` file.
 
 Project Guardian CLI is still in beta and under high development 🚧.
 
