@@ -29,17 +29,20 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Install pnpm
+        uses: pnpm/action-setup@v2
+
       - run: corepack enable
       - uses: actions/setup-node@v3
         with:
           node-version: 18.x
-          cache: npm
+          cache: pnpm
 
       - name: 📦 Install dependencies
-        run: npm install
+        run: pnpm install
 
       - name: 👀 Lint
-        run: npm run lint
+        run: pnpm run lint
 
       - name: 🚀 Build
-        run: npm run build
+        run: pnpm run build
