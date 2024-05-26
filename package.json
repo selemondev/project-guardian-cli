@@ -1,0 +1,56 @@
+{
+  "name": "guardian-cli",
+  "version": "0.0.0",
+  "description": "Generate neccessary markdown files for your open source project",
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.cjs",
+      "import": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
+  "bin": {
+    "guardian-cli": "./dist/index.js"
+  },
+  "scripts": {
+    "dev": "esno src/index.ts",
+    "build": "tsup src/index.ts --format cjs,esm --clean --dts --minify --shims && npm link"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selemondev/guardian-cli.git"
+  },
+  "files": [
+    "dist"
+  ],
+  "keywords": [
+    "cli",
+    "typescript",
+    "markdown",
+    "javascript"
+  ],
+  "author": "Selemondev",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/selemondev/guardian-cli/issues"
+  },
+  "homepage": "https://github.com/selemondev/guardian-cli#readme",
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "esno": "^4.7.0",
+    "fs-extra": "^11.2.0",
+    "ora": "^8.0.1",
+    "pkg-types": "^1.1.1"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.12.12",
+    "tsup": "^8.0.2",
+    "typescript": "^5.4.5"
+  }
+}
