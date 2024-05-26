@@ -1,14 +1,15 @@
-import fs from "fs-extra";
-import { logger } from "./logger";
-import { readPackageJSON } from "pkg-types";
-import { contributionMarkdownPath } from "./constant"
-import ora from "ora";
+import fs from 'fs-extra'
+import { readPackageJSON } from 'pkg-types'
+import ora from 'ora'
+import { logger } from './logger'
+import { contributionMarkdownPath } from './constant'
 
-export const renderContribution = async () => {
-    const packageJsonPath = `${process.cwd()}/package.json`;
-    const packageJson = await readPackageJSON(packageJsonPath);
+export async function renderContribution() {
+  // eslint-disable-next-line node/prefer-global/process
+  const packageJsonPath = `${process.cwd()}/package.json`
+  const packageJson = await readPackageJSON(packageJsonPath)
 
-    const contributionMarkdownData = `
+  const contributionMarkdownData = `
 # Contributing
 
 Thank you for your valuable contribution and dedication to improving this project! We greatly appreciate your involvement. To ensure a smooth and cohesive collaboration, we have provided some guidelines to help you get started. Kindly take a moment to review them before submitting your contributions. Your efforts will undoubtedly make this project even better, and we look forward to working together on its success!.
@@ -81,29 +82,27 @@ The following is a list of commit types:
 ## License
 
 By contributing your code to the repository, you agree to license your contribution under the [MIT license](./LICENSE).
-    `;
+    `
 
-
-    const spinner = ora();
-    try {
-        if (fs.existsSync(contributionMarkdownPath)) {
-            return;
-        } else {
-            fs.writeFile(contributionMarkdownPath, contributionMarkdownData, (err: unknown) => {
-                if (err) {
-                    if (err instanceof Error) {
-                        logger.error(err.message);
-                        spinner.fail('Failed to write Contribution template.');
-                    }
-                }
-            });
-            spinner.succeed('Contribution template added successfully!');
-        };
-
-    } catch (error) {
-        spinner.fail('An unexpected error occurred.');
-        logger.error(error);
+  const spinner = ora()
+  try {
+    if (fs.existsSync(contributionMarkdownPath)) {
+      return
     }
+    else {
+      fs.writeFile(contributionMarkdownPath, contributionMarkdownData, (err: unknown) => {
+        if (err) {
+          if (err instanceof Error) {
+            logger.error(err.message)
+            spinner.fail('Failed to write Contribution template.')
+          }
+        }
+      })
+      spinner.succeed('Contribution template added successfully!')
+    };
+  }
+  catch (error) {
+    spinner.fail('An unexpected error occurred.')
+    logger.error(error)
+  }
 }
-
-

@@ -1,10 +1,10 @@
-import fs from "fs-extra";
-import { logger } from "./logger";
-import { gitIgnorePath } from "./constant"
-import ora from "ora";
+import fs from 'fs-extra'
+import ora from 'ora'
+import { logger } from './logger'
+import { gitIgnorePath } from './constant'
 
-export const renderGitIgnore = async () => {
-    const gitIgnoreData = `
+export async function renderGitIgnore() {
+  const gitIgnoreData = `
 ### NextJS ###
 # dependencies
 /node_modules
@@ -205,28 +205,27 @@ docs/_book
 
 
 test/
-`;
+`
 
-
-    const spinner = ora();
-    try {
-        if (fs.existsSync(gitIgnorePath)) {
-            return;
-        } else {
-            fs.writeFile(gitIgnorePath, gitIgnoreData, (err: unknown) => {
-                if (err) {
-                    if (err instanceof Error) {
-                        logger.error(err.message)
-                        spinner.fail('Failed to write .gitignore template.');
-                    }
-                }
-            });
-            spinner.succeed('.gitignore template added successfully!');
-        };
-    } catch (error) {
-        spinner.fail('An unexpected error occurred.');
-        logger.error(error);
+  const spinner = ora()
+  try {
+    if (fs.existsSync(gitIgnorePath)) {
+      return
     }
+    else {
+      fs.writeFile(gitIgnorePath, gitIgnoreData, (err: unknown) => {
+        if (err) {
+          if (err instanceof Error) {
+            logger.error(err.message)
+            spinner.fail('Failed to write .gitignore template.')
+          }
+        }
+      })
+      spinner.succeed('.gitignore template added successfully!')
+    };
+  }
+  catch (error) {
+    spinner.fail('An unexpected error occurred.')
+    logger.error(error)
+  }
 }
-
-

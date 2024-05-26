@@ -1,13 +1,14 @@
-import fs from "fs-extra";
-import { logger } from "./logger";
-import { readPackageJSON } from "pkg-types";
-import { codeOfConductMarkdownPath } from "./constant"
-import ora from "ora";
+import fs from 'fs-extra'
+import { readPackageJSON } from 'pkg-types'
+import ora from 'ora'
+import { logger } from './logger'
+import { codeOfConductMarkdownPath } from './constant'
 
-export const renderCodeOfConduct = async () => {
-    const packageJsonPath = `${process.cwd()}/package.json`;
-    const packageJson = await readPackageJSON(packageJsonPath);
-    const codeOfConductMarkdownData = `
+export async function renderCodeOfConduct() {
+  // eslint-disable-next-line node/prefer-global/process
+  const packageJsonPath = `${process.cwd()}/package.json`
+  const packageJson = await readPackageJSON(packageJsonPath)
+  const codeOfConductMarkdownData = `
 # Contributor Covenant Code of Conduct
 
 ## Our Pledge
@@ -52,27 +53,27 @@ Project maintainers who do not follow or enforce the Code of Conduct in good fai
 
 This Code of Conduct is adapted from the [Contributor Covenant](https://www.contributor-covenant.org), version 1.4, available at https://www.contributor-covenant.org/version/1/4/code-of-conduct.html
 
-For answers to common questions about this code of conduct, see https://www.contributor-covenant.org/faq`;
+For answers to common questions about this code of conduct, see https://www.contributor-covenant.org/faq`
 
-    const spinner = ora();
-    try {
-
-        if (fs.existsSync(codeOfConductMarkdownPath)) {
-            return;
-        } else {
-            fs.writeFile(codeOfConductMarkdownPath, codeOfConductMarkdownData, (err: unknown) => {
-                if (err) {
-                    if (err instanceof Error) {
-                        logger.error(err.message)
-                        spinner.fail('Failed to write Code Of Conduct template.');
-                    }
-                }
-            });
-            spinner.succeed('Code Of Conduct template added successfully!');
-        };
-
-    } catch (error) {
-        spinner.fail('An unexpected error occurred.');
-        logger.error(error);
+  const spinner = ora()
+  try {
+    if (fs.existsSync(codeOfConductMarkdownPath)) {
+      return
     }
+    else {
+      fs.writeFile(codeOfConductMarkdownPath, codeOfConductMarkdownData, (err: unknown) => {
+        if (err) {
+          if (err instanceof Error) {
+            logger.error(err.message)
+            spinner.fail('Failed to write Code Of Conduct template.')
+          }
+        }
+      })
+      spinner.succeed('Code Of Conduct template added successfully!')
+    };
+  }
+  catch (error) {
+    spinner.fail('An unexpected error occurred.')
+    logger.error(error)
+  }
 }

@@ -1,13 +1,14 @@
-import fs from "fs-extra";
-import { logger } from "./logger";
-import { readPackageJSON } from "pkg-types";
-import { licensePath } from "./constant"
-import ora from "ora";
+/* eslint-disable node/prefer-global/process */
+import fs from 'fs-extra'
+import { readPackageJSON } from 'pkg-types'
+import ora from 'ora'
+import { logger } from './logger'
+import { licensePath } from './constant'
 
-export const renderLicense = async () => {
-    const packageJsonPath = `${process.cwd()}/package.json`;
-    const packageJson = await readPackageJSON(packageJsonPath);
-    const licenseData = `
+export async function renderLicense() {
+  const packageJsonPath = `${process.cwd()}/package.json`
+  const packageJson = await readPackageJSON(packageJsonPath)
+  const licenseData = `
 MIT License
 
 Copyright (c) ${packageJson.author ? packageJson.author : ''}
@@ -29,27 +30,27 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-`;
+`
 
-    const spinner = ora();
-    try {
-        if (fs.existsSync(licensePath)) {
-            return;
-        } else {
-            fs.writeFile(licensePath, licenseData, (err: unknown) => {
-                if (err) {
-                    if (err instanceof Error) {
-                        logger.error(err.message)
-                        spinner.fail('Failed to write LICENSE template.');
-                    }
-                }
-            });
-            spinner.succeed('LICENSE template added successfully!');
-        };
-    } catch (error) {
-        spinner.fail('An unexpected error occurred.');
-        logger.error(error);
-    } 
+  const spinner = ora()
+  try {
+    if (fs.existsSync(licensePath)) {
+      return
+    }
+    else {
+      fs.writeFile(licensePath, licenseData, (err: unknown) => {
+        if (err) {
+          if (err instanceof Error) {
+            logger.error(err.message)
+            spinner.fail('Failed to write LICENSE template.')
+          }
+        }
+      })
+      spinner.succeed('LICENSE template added successfully!')
+    };
+  }
+  catch (error) {
+    spinner.fail('An unexpected error occurred.')
+    logger.error(error)
+  }
 }
-
-
