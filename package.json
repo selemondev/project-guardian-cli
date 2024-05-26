@@ -1,18 +1,18 @@
 {
-  "name": "guardian-cli",
+  "name": "project-guardian-cli",
   "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@9.1.1",
   "description": "Generate neccessary markdown files for your open source project",
   "author": "Selemondev",
   "license": "MIT",
-  "homepage": "https://github.com/selemondev/guardian-cli#readme",
+  "homepage": "https://github.com/selemondev/project-guardian-cli#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/selemondev/guardian-cli.git"
+    "url": "git+https://github.com/selemondev/project-guardian-cli.git"
   },
   "bugs": {
-    "url": "https://github.com/selemondev/guardian-cli/issues"
+    "url": "https://github.com/selemondev/project-guardian-cli/issues"
   },
   "keywords": [
     "cli",
@@ -31,7 +31,7 @@
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "bin": {
-    "guardian-cli": "./dist/index.js"
+    "project-guardian-cli": "./dist/index.js"
   },
   "files": [
     "dist"
