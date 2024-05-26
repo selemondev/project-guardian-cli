@@ -5,3 +5,4 @@ export const codeOfConductMarkdownPath = path.join(process.cwd(), '/CODE_OF_COND
 export const readmePath = path.join(process.cwd(), '/README.md');
 export const licensePath = path.join(process.cwd(), '/LICENSE')
 export const gitIgnorePath = path.join(process.cwd(), '/.gitignore');
+export const githubWorkflowPath = path.join(process.cwd(), '/.github');

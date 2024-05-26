@@ -5,19 +5,27 @@ import { renderCodeOfConduct } from "./utils/renderCodeOfConduct";
 import { renderContribution } from "./utils/renderContribution";
 import { renderGitIgnore } from "./utils/renderGitignore";
 import { renderReadme } from "./utils/renderReadme"
-import { codeOfConductMarkdownPath, contributionMarkdownPath, gitIgnorePath, licensePath, readmePath } from "./utils/constant"
+import { codeOfConductMarkdownPath, contributionMarkdownPath, gitIgnorePath, licensePath, readmePath, githubWorkflowPath } from "./utils/constant"
 import fs from 'fs-extra'
 import { logger } from "./utils/logger";
+import { copyTemplate } from "./utils/copyTemplate";
+import path from "node:path";
+import { getFiles } from "./utils/dirRecursive";
 
 async function main() {
     console.log();
+
+    const absolutePath = path.resolve();
+
+    const result = getFiles(absolutePath)
 
     const filesExist = [
         fs.existsSync(contributionMarkdownPath),
         fs.existsSync(codeOfConductMarkdownPath),
         fs.existsSync(readmePath),
         fs.existsSync(licensePath),
-        fs.existsSync(gitIgnorePath)
+        fs.existsSync(gitIgnorePath),
+        fs.existsSync(githubWorkflowPath)
     ];
 
     try {
@@ -36,6 +44,8 @@ async function main() {
             await renderLicense();
 
             await renderGitIgnore();
+
+            await copyTemplate(result);
 
             ora().stop();
 
