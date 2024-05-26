@@ -1,7 +1,7 @@
 {
   "name": "project-guardian-cli",
   "type": "module",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "packageManager": "pnpm@9.1.1",
   "description": "Generate neccessary markdown files for your open source project",
   "author": "Selemondev",
