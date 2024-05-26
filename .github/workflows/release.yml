@@ -16,8 +16,8 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: ['18.x', '20.x']
-          cache: 'npm'
+          node-version: [18.x, 20.x]
+          cache: npm
 
       - run: npx changelogithub
         continue-on-error: true
