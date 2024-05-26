@@ -39,6 +39,7 @@
   "scripts": {
     "dev": "esno src/index.ts",
     "build": "tsup src/index.ts --format cjs,esm --clean --dts --minify --shims && npm link",
+    "release": "pnpm run lint && pnpm run build && npx changelogen@latest --release && npm publish && git push --follow-tags",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix"
   },
