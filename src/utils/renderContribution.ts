@@ -30,7 +30,7 @@ Every significant change is documented in the changelog file.
 
 ## Reporting Issues
 
-Welcome to ${packageJson?.name}! We value your feedback and contributions to make this project better. If you encounter any bugs or have feature requests, please use [Github issues](${packageJson?.url}} issues to submit them.
+Welcome to ${packageJson?.name}! We value your feedback and contributions to make this project better. If you encounter any bugs or have feature requests, please use [Github issues](${packageJson?.url ? packageJson?.url : ''}) issues to submit them.
 
 Before reporting an issue, we ask you to:
 '
