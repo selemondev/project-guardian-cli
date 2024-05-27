@@ -1,6 +1,23 @@
 # Changelog
 
 
+## v0.0.2
+
+[compare changes](https://github.com/selemondev/project-guardian-cli/compare/v0.0.1...v0.0.2)
+
+### 📖 Documentation
+
+- Update shield tag ([58b6ea9](https://github.com/selemondev/project-guardian-cli/commit/58b6ea9))
+- Update docs ([302da9d](https://github.com/selemondev/project-guardian-cli/commit/302da9d))
+
+### 🏡 Chore
+
+- Add templates to files ([0d5ab9b](https://github.com/selemondev/project-guardian-cli/commit/0d5ab9b))
+
+### ❤️ Contributors
+
+- Selemondev <selemondev19@gmail.com>
+
 ## v0.0.1
 
 
