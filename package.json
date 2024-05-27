@@ -34,7 +34,8 @@
     "project-guardian-cli": "./dist/index.js"
   },
   "files": [
-    "dist"
+    "dist",
+    "templates"
   ],
   "scripts": {
     "dev": "esno src/index.ts",
