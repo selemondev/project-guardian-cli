@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 /* eslint-disable no-console */
-import path from 'node:path'
 import ora from 'ora'
 import fs from 'fs-extra'
 import { renderLicense } from './utils/renderLicense'
@@ -8,26 +7,14 @@ import { renderCodeOfConduct } from './utils/renderCodeOfConduct'
 import { renderContribution } from './utils/renderContribution'
 import { renderGitIgnore } from './utils/renderGitignore'
 import { renderReadme } from './utils/renderReadme'
-import { codeOfConductMarkdownPath, contributionMarkdownPath, gitIgnorePath, githubWorkflowPath, licensePath, readmePath } from './utils/constant'
+import { codeOfConductMarkdownPath, contributionMarkdownPath, gitIgnorePath, githubIssueTemplatePath, githubWorkFlowPath, licensePath, readmePath } from './utils/constant'
 import { logger } from './utils/logger'
-import { copyTemplate } from './utils/copyTemplate'
-import { getFiles } from './utils/dirRecursive'
+import { renderGithubActions } from './utils/renderGithubActions'
 
 async function main() {
   console.log()
-
-  const absolutePath = path.resolve()
-
-  const result = getFiles(absolutePath)
-
-  const filesExist = [
-    fs.existsSync(contributionMarkdownPath),
-    fs.existsSync(codeOfConductMarkdownPath),
-    fs.existsSync(readmePath),
-    fs.existsSync(licensePath),
-    fs.existsSync(gitIgnorePath),
-    fs.existsSync(githubWorkflowPath),
-  ]
+  const filePaths = [contributionMarkdownPath, codeOfConductMarkdownPath, readmePath, licensePath, gitIgnorePath, githubIssueTemplatePath, githubWorkFlowPath]
+  const filesExist = filePaths.map((filePath: string) => fs.existsSync(filePath))
 
   try {
     if (filesExist.every(Boolean)) {
@@ -46,7 +33,7 @@ async function main() {
 
       await renderGitIgnore()
 
-      await copyTemplate(result)
+      await renderGithubActions()
 
       ora().stop()
 
