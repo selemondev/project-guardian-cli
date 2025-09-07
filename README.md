@@ -20,10 +20,33 @@ Project Guardian CLI
 
 
 <!-- automd:pm-x version="latest" name="project-guardian-cli" <flags>" -->
+
+```sh
+# npm
+npx project-guardian-cli@latest
+
+# pnpm
+pnpm dlx project-guardian-cli@latest
+
+# bun
+bunx project-guardian-cli@latest
+
+# deno
+deno run -A npm:project-guardian-cli@latest
+```
+
 <!-- /automd -->
 
 
 <!-- automd:contributors author="selemondev" license="MIT" -->
+
+Published under the [MIT](https://github.com/selemondev/project-guardian-cli/blob/main/LICENSE) license.
+Made by [@selemondev](https://github.com/selemondev) and [community](https://github.com/selemondev/project-guardian-cli/graphs/contributors) 💛
+<br><br>
+<a href="https://github.com/selemondev/project-guardian-cli/graphs/contributors">
+<img src="https://contrib.rocks/image?repo=selemondev/project-guardian-cli" />
+</a>
+
 <!-- /automd -->
 
 
