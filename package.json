@@ -1,0 +1,63 @@
+{
+  "name": "project-guardian-cli",
+  "type": "module",
+  "version": "0.0.3",
+  "packageManager": "pnpm@9.15.9",
+  "description": "Generate neccessary markdown files for your open source project",
+  "author": "Selemondev",
+  "license": "MIT",
+  "homepage": "https://github.com/selemondev/project-guardian-cli#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/selemondev/project-guardian-cli.git"
+  },
+  "bugs": {
+    "url": "https://github.com/selemondev/project-guardian-cli/issues"
+  },
+  "keywords": [
+    "cli",
+    "typescript",
+    "markdown",
+    "javascript"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "project-guardian-cli": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "templates"
+  ],
+  "scripts": {
+    "dev": "esno src/index.ts",
+    "build": "tsup src/index.ts --format cjs,esm --clean --dts --minify --shims && npm link",
+    "release": "pnpm run lint && pnpm run build && npx changelogen@latest --release && npm publish --access=public",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
+  },
+  "dependencies": {
+    "chalk": "^5.6.0",
+    "commander": "^14.0.0",
+    "fs-extra": "^11.3.1",
+    "ora": "^8.2.0",
+    "pkg-types": "^1.3.1"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.27.3",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^20.19.13",
+    "eslint": "^9.35.0",
+    "esno": "^4.8.0",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.2"
+  }
+}
