@@ -54,7 +54,7 @@
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.3",
     "@types/fs-extra": "^11.0.4",
-    "@types/node": "^20.19.13",
+    "@types/node": "^24.3.1",
     "eslint": "^9.35.0",
     "esno": "^4.8.0",
     "tsup": "^8.5.0",
